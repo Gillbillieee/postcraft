@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostCraft — AI Social Media Post Generator | Free LinkedIn & Twitter Posts</title>
+  <meta name="description" content="Generate engaging LinkedIn & Twitter posts in seconds. Free AI-powered post generator for professionals. No signup required.">
+  <meta name="keywords" content="linkedin post generator, twitter post generator, social media posts, ai writing tool, content creator">
+  <meta name="author" content="PostCraft">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="PostCraft — AI Social Media Post Generator">
+  <meta property="og:description" content="Generate engaging LinkedIn & Twitter posts in seconds. Free, no signup required.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://postcraft.app">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PostCraft — AI Social Media Post Generator">
+  <meta name="twitter:description" content="Generate engaging LinkedIn & Twitter posts in seconds.">
+  <link rel="stylesheet" href="/src/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">⚡</span> PostCraft
+      </a>
+      <div class="nav-links">
+        <a href="#features" class="nav-link">Features</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#" class="btn btn-sm btn-outline" onclick="scrollToApp()">Get Started Free</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-content">
+      <h1>Generate Posts That <span class="gradient-text">Actually Get Engaged With</span></h1>
+      <p class="hero-subtitle">Stop staring at a blank screen. Type your topic, pick your platform, and get 3 polished post variations in seconds.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number">50K+</span>
+          <span class="stat-label">Posts Generated</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">12K+</span>
+          <span class="stat-label">Active Users</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">4.9★</span>
+          <span class="stat-label">User Rating</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Section -->
+  <section id="app" class="app-section">
+    <div class="container">
+      <div class="app-card">
+        <div class="app-header">
+          <h2>✍️ Generate Your Post</h2>
+          <p class="app-hint">Free — no signup required</p>
+        </div>
+
+        <div class="app-body">
+          <!-- Input Panel -->
+          <div class="input-panel">
+            <div class="form-group">
+              <label for="topic">Your Topic or Idea</label>
+              <textarea id="topic" rows="3" placeholder="e.g. Why consistency beats talent in building a personal brand"></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="platform">Platform</label>
+                <select id="platform">
+                  <option value="linkedin">LinkedIn</option>
+                  <option value="twitter">Twitter / X</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="tone">Tone</label>
+                <select id="tone">
+                  <option value="professional">Professional</option>
+                  <option value="casual">Casual & Friendly</option>
+                  <option value="controversial">Contrarian / Hot Take</option>
+                  <option value="storytelling">Storytelling</option>
+                  <option value="humorous">Humorous</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="keywords">Keywords (optional, comma separated)</label>
+              <input type="text" id="keywords" placeholder="e.g. leadership, growth, startup">
+            </div>
+
+            <button class="btn btn-primary btn-lg" onclick="generatePosts()" id="generateBtn">
+              <span class="btn-icon">✨</span> Generate Posts
+            </button>
+
+            <!-- Tips -->
+            <div class="tips-card">
+              <strong>💡 Pro Tip:</strong> Be specific about your topic for better results. Instead of "productivity," try "how I ship 3x more code by writing tests first."
+            </div>
+          </div>
+
+          <!-- Output Panel -->
+          <div class="output-panel">
+            <div class="output-header">
+              <h3>Your Posts</h3>
+              <div class="output-actions" id="outputActions" style="display:none;">
+                <button class="btn btn-sm btn-outline" onclick="copyAll()">📋 Copy All</button>
+                <button class="btn btn-sm btn-outline" onclick="downloadPosts()">💾 Download</button>
+              </div>
+            </div>
+
+            <div id="postsContainer" class="posts-container">
+              <!-- Empty State -->
+              <div class="empty-state" id="emptyState">
+                <div class="empty-icon">📝</div>
+                <p>Your generated posts will appear here.</p>
+                <p class="empty-hint">Enter a topic and hit generate!</p>
+              </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state" style="display:none;">
+              <div class="spinner"></div>
+              <p>Generating your posts...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How It Works -->
+      <div class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Type Your Topic</h3>
+            <p>Enter any topic, idea, or experience you want to write about.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Pick Platform & Tone</h3>
+            <p>Choose LinkedIn, Twitter, or both. Select the voice that fits your brand.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Copy & Post</h3>
+            <p>Get 3 unique variations instantly. Pick your favorite and post it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <h2>Why Professionals Choose PostCraft</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Generate 3 unique post variations in under 5 seconds. No more staring at a blank cursor.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>Platform Optimized</h3>
+          <p>LinkedIn gets professional formatting with line breaks. Twitter stays under 280 characters.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎭</div>
+          <h3>5 Tone Options</h3>
+          <p>Professional, casual, contrarian, storytelling, or humorous. Match any brand voice.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>No Signup Required</h3>
+          <p>Start generating immediately. Your drafts are saved locally on your browser.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Copy & Export</h3>
+          <p>One-click copy to clipboard or download all posts as a text file.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💰</div>
+          <h3>Free Forever Plan</h3>
+          <p>Unlimited basic generations. No credit card required to start creating.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section">
+    <div class="container">
+      <h2>Simple, Transparent Pricing</h2>
+      <p class="pricing-subtitle">Start free. Upgrade when you're ready.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <div class="pricing-badge free">Free</div>
+          <h3>Starter</h3>
+          <div class="price">$0<span>/forever</span></div>
+          <ul class="feature-list">
+            <li>✅ Unlimited basic generations</li>
+            <li>✅ 2 tone options</li>
+            <li>✅ LinkedIn & Twitter support</li>
+            <li>✅ Copy to clipboard</li>
+            <li>❌ Premium templates</li>
+            <li>❌ Bulk generation</li>
+          </ul>
+          <button class="btn btn-outline btn-lg" onclick="scrollToApp()">Get Started Free</button>
+        </div>
+        <div class="pricing-card featured">
+          <div class="pricing-badge pro">PRO</div>
+          <h3>Pro</h3>
+          <div class="price">$9<span>/month</span></div>
+          <ul class="feature-list">
+            <li>✅ Everything in Free</li>
+            <li>✅ All 5 tone options</li>
+            <li>✅ 20+ premium templates</li>
+            <li>✅ Bulk generation (10 at once)</li>
+            <li>✅ Content calendar export</li>
+            <li>✅ Priority support</li>
+          </ul>
+          <button class="btn btn-primary btn-lg">Upgrade to Pro</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <h2>Get Weekly Post Ideas in Your Inbox</h2>
+      <p>Join 2,000+ professionals who get a fresh post idea every Monday morning.</p>
+      <form class="newsletter-form" id="newsletterForm" onsubmit="return handleNewsletterSubmit(event)">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+        <button type="submit" class="btn btn-primary">Subscribe Free</button>
+      </form>
+      <p class="newsletter-note">🔒 No spam, no selling. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">⚡</span> PostCraft
+      </div>
+      <p>Made with ❤️ for professionals who want to show up online consistently.</p>
+      <p class="footer-note">&copy; 2026 PostCraft. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/src/js/app.js"></script>
+</body>
+</html>
